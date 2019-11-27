@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace shuixianhuashu
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i, j, k, m, n;
+            for (m = 100; m < 1000; m++)
+            {
+                i = m / 100;
+                j = (m / 10) - i * 10;
+                k = m % 10;
+                n = i * i * i + j * j * j + k * k * k;
+                if (m == n)
+                {
+                    Console.WriteLine(m);
+                   
+                }
+            }
+            Console.Read();
+        }
+    }
+}
