@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace max
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = { 1, 4, 7, 5, 6, 8, 3, 4, 9, 0, 3 };
+            int max = 0;
+            int index = 0;
+            
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (max < arr[i])
+                {
+                    max = arr[i];
+                    index = i;
+                }
+            }
+           
+            Console.WriteLine("下标是{0},最大值是{1}", index, max );
+            Console.Read();
+        }
+    }
+}
