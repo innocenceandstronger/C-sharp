@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace replies
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("请输入字符串：");
+            String s = Console.ReadLine();
+            char[] c = s.ToCharArray();
+            int i = c.Length;
+            int j = c.Length - 1;
+            char[] c1 = new char[c.Length];
+            foreach (char var in c)
+            {
+                c1[j] = var;
+                --j;
+            }
+            for (int n = 0; n < c.Length; ++n)
+            {
+                if (c1[n] != c[n])
+                {
+                    foreach (char var in c)
+                    {
+                        Console.Write(var);
+                    }
+                    Console.WriteLine("不是回文数！");
+                    break;
+                }
+                if (n == c.Length - 1)
+                {
+                    foreach (char var in c)
+                    {
+                        Console.Write(var);
+                    }
+                    Console.WriteLine("是回文数！");
+                }
+            }
+            Console.Read();
+        }
+    }
+}
