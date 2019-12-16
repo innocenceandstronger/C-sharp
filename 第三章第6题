@@ -1,0 +1,73 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication6
+{
+     class CPoint
+    {
+        private double x;
+        private double y;
+        public CPoint() { }
+        public CPoint(double x, double y) { this.x = x; this.y = y; }
+        public static double Distance(CPoint n1, CPoint n2)
+        {
+            return Math.Abs(Math.Pow(n1.x - n2.x, 2) + Math.Pow(n1.y - n2.y, 2));
+        }
+ 
+    }
+    class Cline : CPoint
+    {
+        private CPoint n1 ;
+        private CPoint n2 ;
+        public static double operator *(Cline a, Cline b)
+        {
+            return CPoint.Distance(a.n1, a.n2) * CPoint.Distance(a.n1, a.n2);
+ 
+        }
+        public static double operator +(Cline a, Cline b)
+        {
+            return CPoint.Distance(a.n1, a.n2) + CPoint.Distance(a.n1, a.n2);
+        }
+        public Cline() { }
+        public Cline(CPoint n1, CPoint n2) { this.n1 = n1; this.n2 = n2; }
+ 
+    }
+    class CRect : Cline
+    {
+        Cline a;
+        Cline b;
+        public CRect() { }
+        public CRect(Cline a, Cline b) { this.a = a; this.b = b; }
+        public double Perimeter( )
+        {
+            return (a + b)*2;
+        }
+        public double Area( )
+        {
+            return a * b;
+        }
+    }
+ 
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            CPoint n1 = new CPoint(5, 6);
+            CPoint n2 = new CPoint(9, 9);
+            Console.WriteLine("两点之间的距离为:{0}", CPoint.Distance(n1, n2));
+            CPoint n3 = new CPoint(5, 10);
+            CPoint n4 = new CPoint(9, 14);
+            Cline a = new Cline(n1, n2);
+            Cline b = new Cline(n2, n4);
+            CRect rect = new CRect(a, b);
+            Console.WriteLine("矩形的长为:{0}", CPoint.Distance(n1, n2));
+            Console.WriteLine("矩形的宽为:{0}", CPoint.Distance(n2, n4));
+            Console.WriteLine("矩形的面积为:{0}",rect.Area() );
+            Console.WriteLine("矩形的周长为:{0}",rect.Perimeter());
+                Console.ReadKey();
+        }
+    }
+}
