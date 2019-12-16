@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            CPoint p = new CPoint();
+            p.display();
+            Console.WriteLine("修改后的坐标:");
+            p.setpoint(80, 150);
+            Console.Read();
+        }
+    }
+    class CPoint
+    {
+        private double x;
+        private double y;
+        public CPoint()
+        {
+            x = 60;
+            y = 75;
+        }
+        public CPoint(double m, double n)
+        {
+            this.x = m;
+            this.y = n;
+        }
+        public void display()
+        {
+            Console.WriteLine("坐标({0},{1})", x, y);
+        }
+        public void setpoint(double m, double n)
+        {
+            this.x = m;
+            this.y = n;
+            display();
+        }
+    }
+}
