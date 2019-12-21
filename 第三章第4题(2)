@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace zuoye3_4
+{
+    class Program
+    {
+        class CPoint
+        {
+            private int x;
+            private int y;
+            public CPoint()
+                : this(60, 75)
+            {
+
+            }
+            public CPoint(int x, int y)
+            {
+                this.x = x;
+                this.y = y;
+            }
+            public void Display()
+            {
+                Console.WriteLine("x={0},y={1}", x, y);
+            }
+            public void SetPoint(int x, int y)
+            {
+                this.x = x;
+                this.y = y;
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            CPoint cp = new CPoint();
+            cp.Display();
+            cp.SetPoint(80, 150);
+            cp.Display();
+            Console.ReadLine();
+        }
+    }
+}
