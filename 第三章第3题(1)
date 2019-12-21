@@ -1,0 +1,87 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace zuoye3_3
+{
+    class Student
+    {
+        public string name;
+        public int num;   //学号
+        public float c, e, m, ave,sum;
+        public Student()
+        {
+            Console.Write("请输入name: ");
+            name = Console.ReadLine();
+            Console.Write("请输入num: ");
+            num = int.Parse(Console.ReadLine());
+            Console.Write("请输入C++成绩: ");
+            c = float.Parse(Console.ReadLine());
+            Console.Write("请输入English成绩: ");
+            e = float.Parse(Console.ReadLine());
+            Console.Write("请输入Math成绩: ");
+            m = float.Parse(Console.ReadLine());
+        }
+        public void print()
+        {
+           Console.WriteLine("name={0},num={1},C++成绩={2},English成绩={3},Math成绩={4},总成绩={5},平均成绩={6}", name, num, c, e, m, sum,ave);
+        }
+        public void getSumAve(bool print)
+        {
+            sum = c + e + m;
+            ave = sum / 3;
+            if (print)
+            {
+                Console.WriteLine("总成绩={0},平均成绩={1}", sum, ave);
+            }
+        }
+    }
+    class Theclass
+    {
+        Student[] students;
+        int count;
+        public Theclass()
+        {
+            Console.WriteLine("学生数：");
+            count = int.Parse(Console.ReadLine());
+            students = new Student[count];
+            for (int i = 0; i < students.Length; i++)
+            {
+                if (i == count)
+                    break;
+                students[i] = new Student();
+                students[i].getSumAve(false);
+            }
+        }
+        public void paixu()
+        {
+            Student t;
+            for (int i = 0; i < students.Length - i - 1; i++)
+                if (students[i].ave > students[i + 1].ave)
+                {
+                    t = students[i];
+                    students[i] = students[i + 1];
+                    students[i + 1] = t;
+                }
+        }
+        public void shuchu()
+        {
+            for (int i = 0; i < students.Length; i++)
+            {
+                Console.WriteLine("姓名：{0},学号：{1},C语言：{2},数学：{3},英语：{4},总成绩：{5},平均成绩：{6}", students[i].name, students[i].num, students[i].c, students[i].m, students[i].e, students[i].sum, students[i].ave);
+            }
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Theclass m = new Theclass();
+            m.paixu();
+            m.shuchu();
+            Console.Read();
+        }
+    }
+}
