@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace zuoye3_4
+{
+    class CPerson
+    {
+        string name;
+        int num;
+        string sex;
+        public void input()
+        {
+            Console.WriteLine("姓名：");
+            this.name = Console.ReadLine();
+            Console.WriteLine("编号：");
+            this.num = int.Parse(Console.ReadLine());
+            Console.WriteLine("性别：");
+            this.sex = Console.ReadLine();
+        }
+        public void print()
+        {
+            Console.WriteLine("姓名：" + name);
+            Console.WriteLine("编号：" + num);
+            Console.WriteLine("性别："+sex);
+        }
+    }
+    class CStudent: CPerson
+    {
+        float score;
+        public void input1()
+        {
+            Console.WriteLine("这是学生类");
+            base.input();
+            Console.WriteLine("成绩：");
+            this.score = float.Parse(Console.ReadLine());
+        }
+        public void print1()
+        {
+            base.print();
+            Console.WriteLine("成绩：" + score);
+         }
+     }
+    class CTeacher : CPerson
+    {
+        public int age;
+        public void input2()
+        {
+            Console.WriteLine("这是教师类");
+            base.input();
+            Console.WriteLine("教龄：");
+            this.age = int.Parse(Console.ReadLine());
+        }
+        public void print2()
+        {
+            base.print();
+            Console.WriteLine("教龄：" + age);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            CStudent stu = new CStudent();
+            CTeacher teac = new CTeacher();
+            stu.input1();
+            stu.print1();
+            teac.input2();
+            teac.print2();
+            Console.ReadLine();
+        }
+    }
+}
