@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace zuoye3_4
+{
+    class Cpoint
+    {
+        public float x, y;
+        public Cpoint(float x, float y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+    }
+    class Cline
+    {
+        Cpoint p1, p2;
+        public Cline(Cpoint p1, Cpoint p2)
+        {
+            this.p1 = p1;
+            this.p2 = p2;
+        }
+        public float getLength()
+        {
+            float len = (float)Math.Sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
+            return len;
+        }
+    }
+    class Crect
+    {
+        Cline l1, l2;
+        public Crect(Cline l1, Cline l2)
+        {
+            this.l1 = l1;
+            this.l2 = l2;
+        }
+        public float getArea()
+        {
+            return l1.getLength() * l2.getLength();
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Crect rect1 = new Crect(new Cline(new Cpoint(0, 0), new Cpoint(2, 0)), new Cline(new Cpoint(0, 0), new Cpoint(0, 1)));
+            Console.WriteLine(rect1.getArea());
+            Console.Read();
+        }
+    }
+}
